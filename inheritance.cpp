@@ -5,11 +5,11 @@ using namespace std;
 class Animal {
 protected:
     int age;
-    static long IDCount;
     double *location = new double[2];
     bool alive;
     long ID;
 public:
+    static long IDCount;
     Animal() {
         ID = IDCount++;
         age = 0;
@@ -26,8 +26,8 @@ public:
         location[1] = y;
     }
 
-    Animal(const Animal& a) : age(a.age), ID(a.ID), alive(a.alive) {
-        alive = a.alive;
+    Animal(const Animal& a) : age(a.age), alive(a.alive) {
+        ID = IDCount++;
         location[0] = a.location[0];
         location[1] = a.location[1];
     }
@@ -64,6 +64,19 @@ public:
         location[1] = y;
         height = z;
     }
+    Bird(const Bird& a) {
+        age = a.age;
+        ID = IDCount++;
+        location[0] = a.location[0];
+        location[1] = a.location[1];
+        height = a.height;
+        alive = a.alive;
+    };
+
+    ~Bird() {
+        delete location[];
+    }
+
 
     void move(double x, double y, double z) {
         location[0] = x;
@@ -71,8 +84,23 @@ public:
         height = z;
     }
 
+    friend ostream &operator << (ofstream &out, const Bird &c);
+
+    void sleep() {
+        cout << "bird I'm sleeping!!" << endl;
+    }
+    void eat() {
+        cout << "bird tasty!!!" << endl;
+    }
+
+
 };
+
+long Animal::IDCount = 0;
+
 int main() {
     std::cout << "Hello, World!" << std::endl;
+    Animal* asdf = new Animal();
+    Bird* bird = new Bird();
     return 0;
 }
