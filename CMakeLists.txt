@@ -3,4 +3,4 @@ project(Lab_04)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Lab_04 main.cpp)
+add_executable(Lab_04 inheritance.cpp inheritance.hpp)
