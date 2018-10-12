@@ -3,7 +3,7 @@
 using namespace std;
 
 class Animal {
-private:
+protected:
     int age;
     static long IDCount;
     double *location = new double[2];
@@ -34,6 +34,8 @@ public:
 
     virtual ~Animal(){};
 
+    friend ostream &operator << (ofstream &out, const Animal &c);
+
     virtual void move(double x, double y) {
         location[0] = x;
         location[1] = y;
@@ -47,6 +49,29 @@ public:
 
 };
 
+class Bird: public Animal {
+protected:
+    double height;
+public:
+    Bird() {
+        age = 0;
+        location[0] = 0;
+        location[1] = 1;
+    };
+
+    Bird(int age, double x, double y, double z) {
+        location[0] = x;
+        location[1] = y;
+        height = z;
+    }
+
+    void move(double x, double y, double z) {
+        location[0] = x;
+        location[1] = y;
+        height = z;
+    }
+
+};
 int main() {
     std::cout << "Hello, World!" << std::endl;
     return 0;
