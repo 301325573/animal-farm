@@ -1,3 +1,3 @@
 # animal-farm
 
-### This project is to demonstrate Object Oriented principles, specifically inherentance in c++
+### This project demonstrates Object Oriented principles, specifically inherentance in c++
